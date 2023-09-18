@@ -1,39 +1,39 @@
-"use client"
+"use client";
 
-import React, { useState } from "react"
-import Link from "next/link"
-import axios from "axios"
-import { useRouter } from "next/navigation"
-import Cookies from "js-cookie"
+import React, { useState } from "react";
+import Link from "next/link";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 function Login() {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
-  const [success, setSuccess] = useState("")
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
-  const router = useRouter()
+  const router = useRouter();
 
   const handleLoginButton = () => {
     const res = axios
-      .post("http://localhost:5000/api/login", {
+      .post("https://savepdfhoney.netlify.app/api/login", {
         username,
         password,
       })
       .then((res) => {
-        setUsername("")
-        setPassword("")
-        Cookies.set("username", username)
-        Cookies.set("token", res.data.token)
-        setSuccess(res.data.msg)
+        setUsername("");
+        setPassword("");
+        Cookies.set("username", username);
+        Cookies.set("token", res.data.token);
+        setSuccess(res.data.msg);
         setTimeout(() => {
-          router.push("/dashboard")
-        }, 2000)
+          router.push("/dashboard");
+        }, 2000);
       })
       .catch((err) => {
-        setError(err.response.data.msg)
-      })
-  }
+        setError(err.response.data.msg);
+      });
+  };
 
   return (
     <main className="flex justify-center items-center mt-60">
@@ -53,7 +53,7 @@ function Login() {
           type="text"
           value={username}
           onChange={(e) => {
-            setUsername(e.target.value)
+            setUsername(e.target.value);
           }}
           placeholder="username.."
         />
@@ -63,7 +63,7 @@ function Login() {
           type="password"
           value={password}
           onChange={(e) => {
-            setPassword(e.target.value)
+            setPassword(e.target.value);
           }}
           placeholder="test123"
         />
@@ -82,7 +82,7 @@ function Login() {
         </div>
       </div>
     </main>
-  )
+  );
 }
 
-export default Login
+export default Login;

@@ -26,7 +26,7 @@ function Dashboard() {
     formData.append("file", selectedFile);
 
     const res = axios
-      .post("http://localhost:5000/api/upload", formData, {
+      .post("https://savepdfhoney.netlify.app/api/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true,
       })
@@ -46,7 +46,9 @@ function Dashboard() {
   useEffect(() => {
     const fetchData = async () => {
       const res = axios
-        .get("http://localhost:5000/api/user/files", { withCredentials: true })
+        .get("https://savepdfhoney.netlify.app/api/user/files", {
+          withCredentials: true,
+        })
         .then((res) => {
           console.log(res.data);
           setData(res.data);
@@ -61,7 +63,7 @@ function Dashboard() {
   const handleDownload = (filename) => {
     const username = Cookies.get("username");
     const res = axios.post(
-      `http://localhost:5000/api/file/download/${filename}`,
+      `https://savepdfhoney.netlify.app/api/file/download/${filename}`,
       { username },
       { withCredentials: true }
     );
@@ -71,7 +73,7 @@ function Dashboard() {
     const username = Cookies.get("username");
     const res = axios
       .post(
-        `http://localhost:5000/api/file/delete/${filename}`,
+        `https://savepdfhoney.netlify.app/api/file/delete/${filename}`,
         { username },
         { withCredentials: true }
       )

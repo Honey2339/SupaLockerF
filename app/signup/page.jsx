@@ -1,40 +1,40 @@
-"use client"
+"use client";
 
-import React, { useState } from "react"
-import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
-import axios from "axios"
+import React, { useState } from "react";
+import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import axios from "axios";
 
 function SignUp() {
-  const [clientData, setClientData] = useState()
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
-  const [success, setSuccess] = useState("")
+  const [clientData, setClientData] = useState();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
-  const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID
+  const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID;
 
-  const router = useRouter()
+  const router = useRouter();
 
   const handleSignUpButton = () => {
     const res = axios
-      .post("http://localhost:5000/api/signup", {
+      .post("https://savepdfhoney.netlify.app/api/signup", {
         username,
         password,
       })
       .then((res) => {
-        setSuccess(res.data.msg)
-        setUsername("")
-        setPassword("")
+        setSuccess(res.data.msg);
+        setUsername("");
+        setPassword("");
         setTimeout(() => {
-          router.push("/login")
-        }, 2000)
+          router.push("/login");
+        }, 2000);
       })
       .catch((err) => {
-        setError(err.response.data.msg)
-      })
-  }
+        setError(err.response.data.msg);
+      });
+  };
 
   return (
     <main className="flex justify-center items-center mt-60">
@@ -54,7 +54,7 @@ function SignUp() {
           type="text"
           value={username}
           onChange={(e) => {
-            setUsername(e.target.value)
+            setUsername(e.target.value);
           }}
           placeholder="username"
         />
@@ -63,7 +63,7 @@ function SignUp() {
           className="rounded-lg py-2"
           type="password"
           onChange={(e) => {
-            setPassword(e.target.value)
+            setPassword(e.target.value);
           }}
           value={password}
           placeholder="test123"
@@ -79,8 +79,8 @@ function SignUp() {
           <div className="flex justify-center">
             <GoogleLogin
               onSuccess={(data) => {
-                console.log(data)
-                setClientData(data)
+                console.log(data);
+                setClientData(data);
               }}
             />
           </div>
@@ -93,7 +93,7 @@ function SignUp() {
         </div>
       </div>
     </main>
-  )
+  );
 }
 
-export default SignUp
+export default SignUp;
