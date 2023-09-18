@@ -16,7 +16,7 @@ function Login() {
 
   const handleLoginButton = () => {
     const res = axios
-      .post("https://savepdfhoney.netlify.app/api/login", {
+      .post("https://supa-locker-b.vercel.app/api/login", {
         username,
         password,
       })

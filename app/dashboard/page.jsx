@@ -26,7 +26,7 @@ function Dashboard() {
     formData.append("file", selectedFile);
 
     const res = axios
-      .post("https://savepdfhoney.netlify.app/api/upload", formData, {
+      .post("https://supa-locker-b.vercel.app/api/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true,
       })
@@ -46,7 +46,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchData = async () => {
       const res = axios
-        .get("https://savepdfhoney.netlify.app/api/user/files", {
+        .get("https://supa-locker-b.vercel.app/api/user/files", {
           withCredentials: true,
         })
         .then((res) => {
@@ -63,7 +63,7 @@ function Dashboard() {
   const handleDownload = (filename) => {
     const username = Cookies.get("username");
     const res = axios.post(
-      `https://savepdfhoney.netlify.app/api/file/download/${filename}`,
+      `https://supa-locker-b.vercel.app/api/file/download/${filename}`,
       { username },
       { withCredentials: true }
     );
@@ -73,7 +73,7 @@ function Dashboard() {
     const username = Cookies.get("username");
     const res = axios
       .post(
-        `https://savepdfhoney.netlify.app/api/file/delete/${filename}`,
+        `https://supa-locker-b.vercel.app/api/file/delete/${filename}`,
         { username },
         { withCredentials: true }
       )
