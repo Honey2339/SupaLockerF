@@ -23,8 +23,8 @@ function Login() {
       .then((res) => {
         setUsername("");
         setPassword("");
-        Cookies.set("username", username , { secure: true });
-        Cookies.set("token", res.data.token , { secure: true });
+        Cookies.set("username", username , { secure: true } , {sameSite : "none"});
+        Cookies.set("token", res.data.token , { secure: true }, {sameSite : "none"});
         setSuccess(res.data.msg);
         setTimeout(() => {
           router.push("/dashboard");
