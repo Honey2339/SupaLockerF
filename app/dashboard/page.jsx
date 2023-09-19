@@ -45,7 +45,7 @@ function Dashboard() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = axios
+      const res = await axios
         .get("https://supabaseb.onrender.com/api/user/files", {
           withCredentials: true,
         })
