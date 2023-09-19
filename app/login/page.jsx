@@ -16,7 +16,7 @@ function Login() {
 
   const handleLoginButton = () => {
     const res = axios
-      .post("https://supa-locker-b.vercel.app/api/login", {
+      .post("https://supabaseb.onrender.com/api/login", {
         username,
         password,
       })
