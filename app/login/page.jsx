@@ -23,8 +23,20 @@ function Login() {
       .then((res) => {
         setUsername("");
         setPassword("");
-        Cookies.set("username", username , { secure: true } , {sameSite : "none"});
-        Cookies.set("token", res.data.token , { secure: true }, {sameSite : "none"});
+        Cookies.set("username", username , {
+          secure: true,
+          sameSite: "None",
+          domain: "savepdfhoney.netlify.app",
+          path: "/",
+          expires: 0.1,
+        });
+        Cookies.set("token", res.data.token , {
+          secure: true,
+          sameSite: "None",
+          domain: "savepdfhoney.netlify.app",
+          path: "/",
+          expires: 0.1,
+        });
         setSuccess(res.data.msg);
         setTimeout(() => {
           router.push("/dashboard");
