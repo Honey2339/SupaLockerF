@@ -21,9 +21,10 @@ function Dashboard() {
 
   const handleFileSelect = (e) => {
     const selectedFile = e.target.files[0];
-
+    const username = Cookies.get("username");
     const formData = new FormData();
     formData.append("file", selectedFile);
+    formData.append("username", username);
 
     const res = axios
       .post("https://supabaseb.onrender.com/api/upload", formData, {
