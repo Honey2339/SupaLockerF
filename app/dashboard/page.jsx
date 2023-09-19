@@ -45,8 +45,9 @@ function Dashboard() {
 
   useEffect(() => {
     const fetchData = async () => {
+      const username = Cookies.get("username");
       const res = await axios
-        .get("https://supabaseb.onrender.com/api/user/files", {
+        .post("https://supabaseb.onrender.com/api/user/files", username ,{
           withCredentials: true,
         })
         .then((res) => {
