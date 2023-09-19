@@ -19,7 +19,7 @@ function SignUp() {
 
   const handleSignUpButton = () => {
     const res = axios
-      .post("https://supa-locker-b.vercel.app/api/signup", {
+      .post("https://supabaseb.onrender.com//api/signup", {
         username,
         password,
       })
